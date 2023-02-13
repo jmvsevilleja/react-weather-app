@@ -1,11 +1,26 @@
+import { useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "../components/LoginButton";
-import LogoutButton from "../components/LogoutButton";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // redirect to home when logged in
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated]);
+
+  if (isLoading) {
+    return <div>Loading ...</div>;
+  }
+
   return (
     <div>
-      <LoginButton />
-      <LogoutButton />
       <div className="flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +40,7 @@ const LoginPage = () => {
         Welcome to the weather forecast web application. Please login with your
         Github user to use the application and view the weather in your city.
       </p>
+      <LoginButton />
     </div>
   );
 };
