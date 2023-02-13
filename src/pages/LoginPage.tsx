@@ -4,16 +4,15 @@ import LoginButton from "../components/LoginButton";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
-
   const navigate = useNavigate();
+  const { isAuthenticated, isLoading } = useAuth0();
 
   useEffect(() => {
     // redirect to home when logged in
     if (isAuthenticated) {
       navigate("/home");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   if (isLoading) {
     return <div>Loading ...</div>;
