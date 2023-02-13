@@ -1,10 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { getWeather } from "../api/api";
 import Button from "../components/Button";
 import TextField from "../components/TextField";
 
+interface Props {
+  screen: string;
+  setScreen(screen: string): void;
+}
 interface WeatherData {
   name: string;
   date: number;
@@ -15,7 +18,7 @@ interface WeatherData {
   humidity: string;
 }
 
-const WeatherScreen: React.FC = () => {
+const WeatherScreen: React.FC<Props> = ({ screen, setScreen }) => {
   const [city, setCity] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [weather, setWeather] = useState<Array<WeatherData>>([]);
@@ -24,6 +27,7 @@ const WeatherScreen: React.FC = () => {
     getWeather(city).then((data) => {
       if (data) {
         setMessage("");
+        setScreen("weather");
         setWeather(
           data.list
             .filter((item: any) => item.dt_txt.endsWith("6:00:00"))
@@ -40,27 +44,32 @@ const WeatherScreen: React.FC = () => {
       } else {
         setMessage("City not found");
         setWeather([]);
+        setScreen("");
       }
     });
   };
 
   return (
     <div className="my-10 space-y-4">
-      <div className="flex justify-center">
-        <TextField
-          name="city"
-          label=""
-          value={city}
-          onChange={(e: any) => setCity(e.target.value)}
-          placeholder="City"
-        />
-      </div>
-      <div className="flex justify-center">
-        <Button text="Display Weather" onClick={() => handleGetWeather()} />
-      </div>
+      {screen !== "weather" && (
+        <div className="space-y-4">
+          <div className="flex justify-center">
+            <TextField
+              name="city"
+              label=""
+              value={city}
+              onChange={(e: any) => setCity(e.target.value)}
+              placeholder="City"
+            />
+          </div>
+          <div className="flex justify-center">
+            <Button text="Display Weather" onClick={() => handleGetWeather()} />
+          </div>
+        </div>
+      )}
       {message && <div className="flex justify-center">{message}</div>}
-      {weather.length !== 0 && (
-        <div className="table-responsive overflow-auto">
+      {weather.length !== 0 && screen == "weather" && (
+        <div className="table-responsive overflow-auto mt-4">
           <table className="table-auto w-full text-left">
             <thead>
               <tr className="bg-primary text-white">
@@ -85,6 +94,11 @@ const WeatherScreen: React.FC = () => {
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+      {screen && (
+        <div className="flex justify-end">
+          <Button text="Back" onClick={() => setScreen("")} />
         </div>
       )}
     </div>
