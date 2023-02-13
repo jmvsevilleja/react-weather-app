@@ -1,25 +1,21 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import WeatherPage from "./pages/WeatherPage";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header className="App-header"></header>
+      <div>
+        {isAuthenticated ? "Authenticated" : "not Authenticated"}
+        <LoginPage />
+        <HomePage />
+        <WeatherPage />
+      </div>
     </div>
   );
 }
