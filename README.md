@@ -1,5 +1,6 @@
 ## Introduction
 
+![Alt text](screenshot.jpg?raw=true "Title")
 This is a weather app built with React, TailwindCSS, and TypeScript that makes use of the OpenWeatherMap API to display the weather for a given location. The app also includes authentication through Auth0.
 
 ## Getting Started
