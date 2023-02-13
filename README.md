@@ -22,7 +22,7 @@ The following packages were used in this project:
 - `moment`: used for formatting dates.
 - `react`: the main React library.
 - `tailwindcss`: used for styling the app with Tailwind CSS.
-- `typescript`: used for writing the app in TypeScript.
+- `typescript`: used for type handling.
 
 ## Folder Structure
 
@@ -43,4 +43,4 @@ The following packages were used in this project:
 - The `src/layout` folder contains reusable components that make up the layout of the pages, such as the Header Navigation.
 - The `src/screens` folder contains reusable feature components of the page, such as the Weather screen.
 - The `src/components` folder contains reusable components that can be used throughout the app, such as the Button.
-- The `src/api` folder contains all the API configurations and calls to third-party APIs, such as Auth0 and OpenWeatherMap API.
+- The `src/api` folder contains all the API configurations and calls to third-party APIs, such as OpenWeatherMap API.
