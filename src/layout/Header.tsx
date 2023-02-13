@@ -5,7 +5,7 @@ import LogoutButton from "../components/LogoutButton";
 export const Header = () => {
   const { isAuthenticated } = useAuth0();
   return (
-    <header className="bg-gray-900 text-white py-4  ">
+    <header className="bg-primary text-white py-4  ">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center text-white my-2">
           <svg
@@ -24,13 +24,13 @@ export const Header = () => {
         </div>
         <nav className="hidden md:flex">
           <Link
-            className="px-4 py-2 text-sm font-medium hover:bg-gray-800"
+            className="px-4 py-2 text-sm font-medium hover:bg-secondary rounded"
             to="/home"
           >
             Home
           </Link>
           <Link
-            className="px-4 py-2 text-sm font-medium hover:bg-gray-800"
+            className="px-4 py-2 text-sm font-medium hover:bg-secondary rounded"
             to="/weather"
           >
             Weather

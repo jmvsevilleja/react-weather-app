@@ -27,7 +27,7 @@ const TextField: React.FC<TextFieldProps> = ({
           name={name}
           value={value}
           onChange={onChange}
-          className="shadow appearance-none border rounded w-full py-2 px-10 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="shadow appearance-none border rounded w-full py-2 px-10 leading-tight focus:outline-none focus:shadow-outline"
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-3">
           <svg

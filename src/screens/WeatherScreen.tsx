@@ -16,8 +16,8 @@ interface WeatherData {
 }
 
 const WeatherScreen: React.FC = () => {
-  const [city, setCity] = useState("");
-  const [message, setMessage] = useState("");
+  const [city, setCity] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [weather, setWeather] = useState<Array<WeatherData>>([]);
 
   const handleGetWeather = async () => {
@@ -63,7 +63,7 @@ const WeatherScreen: React.FC = () => {
         <div className="table-responsive overflow-auto">
           <table className="table-auto w-full text-left">
             <thead>
-              <tr className="bg-gray-800 text-white">
+              <tr className="bg-primary text-white">
                 <th className="px-4 py-2">Date</th>
                 <th className="px-4 py-2">Temperature(F)</th>
                 <th className="px-4 py-2">Description</th>
